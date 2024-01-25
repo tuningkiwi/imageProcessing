@@ -20,7 +20,7 @@ def format_image(image,label):
 test_batches = raw_test.map(format_image).batch(1)
 
 #모델 로드 
-interpreter = tf.lite.Interpreter(model_path='converted_model.tflite')
+interpreter = tf.lite.Interpreter(model_path='/content/drive/MyDrive/INTEL_PYTHON/converted_model.tflite')
 #텐서 할당 
 interpreter.allocate_tensors()
 
@@ -58,7 +58,6 @@ score  = 0
 for item in range(0,99):
     prediction = np.argmax(predictions[item])
     label = test_labels[item]
-    print(prediction,'+', label)
     if prediction == label:
         score = score +1
 
@@ -75,7 +74,6 @@ def plot_image(i, predictions_array, true_label, img):
     
     # 't' is a tensor of shape [1, 2, 1, 3, 1, 1]
     img = tf.squeeze(img) # [2, 3]
-    print(tf.shape(img))
 
     plt.imshow(img)
 
@@ -90,7 +88,7 @@ def plot_image(i, predictions_array, true_label, img):
                                     class_names[true_label]),
                                     color=color)
 
-for index in range(0,10):
+for index in range(0,99):
     plt.figure(figsize = (6,3))
     plt.subplot(1,2,1)
     plot_image(index, predictions, test_labels, test_imgs)
