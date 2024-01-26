@@ -1,3 +1,7 @@
+###############################
+# colab에서 실행 필요 
+################################
+
 import numpy as np 
 import matplotlib.pylab as plt 
 import tensorflow as tf
