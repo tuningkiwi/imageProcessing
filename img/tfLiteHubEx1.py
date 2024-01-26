@@ -62,4 +62,17 @@ hist = model.fit(
     validation_data = validation_batches
 )
 
+#학습된 모델 저장하기
+#colab 버전 
+#CATS_VS_DOGS_SAVED_MODEL = "/content/drive/MyDrive/INTEL_PYTHON/exp_saved_model" 
+#pc 버전 
+CATS_VS_DOGS_SAVED_MODEL = 'exp_saved_model'
+tf.saved_model.save(model, CATS_VS_DOGS_SAVED_MODEL)
 
+
+#tensoflow lite로 변환하기
+converter = tf.lite.TFLiteConverter.from_saved_model(CATS_VS_DOGS_SAVED_MODEL)
+tflite_model = converter.convert()
+tflite_model_file = 'converted_model.tflite'
+with open(tflite_model_file, "wb") as f:
+  f.write(tflite_model)
