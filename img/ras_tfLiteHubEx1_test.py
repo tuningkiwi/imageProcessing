@@ -24,7 +24,9 @@ def format_image(image,label):
 test_batches = raw_test.map(format_image).batch(1)
 
 #모델 로드 
-interpreter = tf.lite.Interpreter(model_path='/content/drive/MyDrive/INTEL_PYTHON/converted_model.tflite')
+#interpreter = tf.lite.Interpreter(model_path='/content/drive/MyDrive/INTEL_PYTHON/converted_model.tflite')
+interpreter = tf.lite.Interpreter(model_path='converted_model.tflite')
+
 #텐서 할당 
 interpreter.allocate_tensors()
 
@@ -92,11 +94,27 @@ def plot_image(i, predictions_array, true_label, img):
                                     class_names[true_label]),
                                     color=color)
 
-for index in range(0,99):
-    plt.figure(figsize = (6,3))
-    plt.subplot(1,2,1)
-    plot_image(index, predictions, test_labels, test_imgs)
-    plt.show() 
+# for index in range(0,99):
+#     plt.figure(figsize = (6,3))
+#     plt.subplot(1,2,1)
+#     plot_image(index, predictions, test_labels, test_imgs)
+#     plt.show() 
+#     plt.savefig('boston.png')
+#     break
 
+
+for index in range(0,100):
+
+    if index%2 == 0 :
+      plt.figure(figsize = (6,3))
+      plt.subplot(121)
+    elif index %2 ==1 :
+      plt.subplot(122)
+
+    plot_image(index, predictions, test_labels, test_imgs)
+    if index %2 ==1:
+      plt.show()
+      imgFile = 'resultImg/result{}.png'.format(index)
+      plt.savefig(imgFile)
 
 
