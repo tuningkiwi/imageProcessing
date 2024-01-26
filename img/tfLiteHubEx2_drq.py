@@ -76,7 +76,7 @@ tf.saved_model.save(model, CATS_VS_DOGS_SAVED_MODEL)
 
 #tensoflow lite로 변환하기
 converter = tf.lite.TFLiteConverter.from_saved_model(CATS_VS_DOGS_SAVED_MODEL)
-converter.optimizations = [tf.lite.Optimize.Default]
+converter.optimizations = [tf.lite.Optimize.DEFAULT]
 tflite_model = converter.convert()
 tflite_model_file = 'drq_converted_model.tflite'
 with open(tflite_model_file, "wb") as f:
