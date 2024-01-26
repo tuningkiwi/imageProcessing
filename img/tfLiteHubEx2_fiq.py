@@ -1,5 +1,5 @@
 ###############################
-# colab에서 실행 필요 : 동적 범위 양자화 (dynamic range quantization)
+# colab에서 실행 필요 : 완전한 정수 양자화 (full integer quantization)
 ################################
 
 import numpy as np 
@@ -70,7 +70,7 @@ hist = model.fit(
 #colab 버전 
 #CATS_VS_DOGS_SAVED_MODEL = "/content/drive/MyDrive/INTEL_PYTHON/exp_saved_model" 
 #pc 버전 
-CATS_VS_DOGS_SAVED_MODEL = 'fiq_exp_saved_model'
+CATS_VS_DOGS_SAVED_MODEL = '/content/drive/MyDrive/INTEL_PYTHON/fiq_exp_saved_model'
 tf.saved_model.save(model, CATS_VS_DOGS_SAVED_MODEL)
 
 
@@ -87,6 +87,6 @@ converter.representative_dataset = representative_data_gen
 converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8]
 
 tflite_model = converter.convert()
-tflite_model_file = 'fiq_converted_model.tflite'
+tflite_model_file = '/content/drive/MyDrive/INTEL_PYTHON/fiq_converted_model.tflite'
 with open(tflite_model_file, "wb") as f:
   f.write(tflite_model)
