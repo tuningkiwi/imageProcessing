@@ -2,7 +2,7 @@
 ## 라즈베리 파이에서 실행할 파일 
 ###########################
 
-import tensorflow as tf 
+#import tensorflow as tf 
 import tflite_runtime.interpreter as tflite
 import tensorflow_datasets as tfds 
 import numpy as np 
