@@ -3,6 +3,7 @@
 ###########################
 
 import tensorflow as tf 
+import tflite_runtime.interpreter as tflite
 import tensorflow_datasets as tfds 
 import numpy as np 
 import matplotlib.pyplot as plt 
@@ -25,7 +26,7 @@ test_batches = raw_test.map(format_image).batch(1)
 
 #모델 로드 
 #interpreter = tf.lite.Interpreter(model_path='/content/drive/MyDrive/INTEL_PYTHON/converted_model.tflite')
-interpreter = tf.lite.Interpreter(model_path='converted_model.tflite')
+interpreter = tflite.Interpreter(model_path='converted_model.tflite')
 
 #텐서 할당 
 interpreter.allocate_tensors()

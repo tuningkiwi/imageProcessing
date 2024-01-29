@@ -1,9 +1,9 @@
-import tensorflow as tf
+#import tensorflow as tf
 import tflite_runtime.interpreter as tflite
 import numpy as np 
 
 #모델 로드 
-interpreter = tf.lite.Interpreter(model_path='model.tflite')
+interpreter = tflite.Interpreter(model_path='model.tflite')
 #텐서 할당 
 interpreter.allocate_tensors()
 
