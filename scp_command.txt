@@ -1,0 +1,18 @@
+##############################
+로컬에서 서버로 보내기 
+
+scp -P 15522 mail pi@10.10.23.201:/home/pi/tfPrj/mail2
+
+#포트 지정 
+scp -r -P [port 번호] [전송할 파일 로컬 경로] [서버 이름]@[서버 IP]:[저장될 서버 경로]
+
+# 파일 하나
+$ scp C:\Users\Desktop\test servername@192.168.0.123:/home/test.txt
+
+# 폴터 통째로
+$ scp -r C:\Users\Desktop\test servername@192.168.0.123:/home
+
+##############################
+
+서버에서 로컬로 
+scp servername@192.168.0.123:/home/test.txt C:\Users\Desktop\test
